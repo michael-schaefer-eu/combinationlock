@@ -10,12 +10,17 @@ $phar = new Phar($filename);
 
 $phar->startBuffering();
 
-$defaultStub = $phar->createDefaultStub('index.php', '/index.php');
+/**
+ * Add index.php and only the src & vendor directories to the phar
+ */
+$phar->addFile('index.php');
+$phar->buildFromDirectory('./', "/(src|vendor).*\.php$/");
 
-$phar->buildFromDirectory('src/');
-
+/**
+ * Make the phar file executable (requires +x mod)
+ */
+$defaultStub = $phar->createDefaultStub('index.php');
 $shebang = "#!/usr/bin/env php\n";
-
 $stub = $shebang . $defaultStub;
 
 $phar->setStub($stub);

@@ -8,12 +8,12 @@ COPY docker/php/conf.d/docker-php-phar.ini $PHP_INI_DIR/conf.d/docker-php-phar.i
 
 WORKDIR /srv/app
 
-COPY composer.json ./
-COPY build-phar.php ./
+COPY composer.json composer.lock build-phar.php index.php ./
 COPY src ./src/
+COPY tests ./tests/
 
 RUN set -eux; \
-	composer install --prefer-dist --no-scripts --no-progress --no-interaction; \
+	composer install --no-dev --prefer-dist --no-scripts --no-progress --no-interaction; \
     composer clear-cache; \
     composer dump-autoload --classmap-authoritative; \
 	php build-phar.php; \

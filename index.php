@@ -31,7 +31,10 @@ if ($length <= 1) {
 }
 
 $generator = new \App\CombinationLock\CodeGenerator\SimpleCodeGenerator();
-$builder = new \App\CombinationLock\NumberCodeBuilder($generator);
+$noNumber4Filter = new \App\CombinationLock\CodeFilter\NotContainsNumberFilter(4);
+$hasNumber5Filter = new \App\CombinationLock\CodeFilter\ContainsNumberFilter(5);
+$hasNumber6Filter = new \App\CombinationLock\CodeFilter\ContainsNumberFilter(6);
+$builder = new \App\CombinationLock\NumberCodeBuilder($generator, [$noNumber4Filter, $hasNumber5Filter, $hasNumber6Filter]);
 $codes = $builder->buildCodes($length);
 
 foreach ($codes as $code) {

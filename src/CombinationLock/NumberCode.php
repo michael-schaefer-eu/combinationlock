@@ -7,6 +7,7 @@ namespace App\CombinationLock;
  */
 class NumberCode
 {
+    /** @var int[] */
     private array $code;
 
     public function __construct(array $code)
@@ -29,6 +30,9 @@ class NumberCode
         $this->code = $code;
     }
 
+    /**
+     * @return int[]
+     */
     public function getCode(): array
     {
         return $this->code;

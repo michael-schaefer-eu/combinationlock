@@ -30,11 +30,10 @@ if ($length <= 1) {
     showError('Error: Wrong length argument value. Please call the application with a numeric length argument greater then zero (0).', $scriptName);
 }
 
-$code = [];
-for ($i = 0; $i < $length; $i++) {
-    $code[] = $i;
-}
+$generator = new \App\CombinationLock\CodeGenerator\SimpleCodeGenerator();
+$builder = new \App\CombinationLock\NumberCodeBuilder($generator);
+$codes = $builder->buildCodes($length);
 
-$lock = new \App\CombinationLock\NumberCode($code);
-echo $lock;
-echo PHP_EOL;
+foreach ($codes as $code) {
+    echo $code . PHP_EOL;
+}

@@ -38,6 +38,11 @@ class NumberCode
         return $this->code;
     }
 
+    public function getCodeLength(): int
+    {
+        return count($this->code);
+    }
+
     public function __toString(): string
     {
         return array_reduce($this->getCode(), function($ax, $dx) { return $ax . "{$dx}"; });

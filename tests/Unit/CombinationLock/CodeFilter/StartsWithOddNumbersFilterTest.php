@@ -2,7 +2,6 @@
 
 namespace Unit\CombinationLock\CodeFilter;
 
-use App\CombinationLock\CodeFilter\ContainsNumberFilter;
 use App\CombinationLock\CodeFilter\StartsWithOddNumbersFilter;
 use App\CombinationLock\NumberCode;
 use PHPUnit\Framework\TestCase;

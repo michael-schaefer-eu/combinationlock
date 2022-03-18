@@ -55,7 +55,7 @@ To run the app, simply execute `php combinationlock.phar <n>` with n as the code
 Example:
 
 ```
-$ php combinationlock.phar 3
+$ php combinationlock.phar 5
 10056
 10156
 .

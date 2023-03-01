@@ -1,12 +1,12 @@
-# Combination Lock
-A combination lock CLI app with docker and phar build
+# Number Code Breaker
+A number combination code breaker CLI app with docker and phar build
 
 ## Business Rules
 
-The cli app should display all possible codes for a combination lock with the following rules:
+The cli app should display all possible codes for a number combination with the following rules:
 
-- The lock consists of a given number of rings (code length).
-- Every ring has the numbers `0..9`
+- The code consists of a given amount of numbers (code length).
+- Every code has the numbers `0..9`
 - The code does **not** contain the number `4`
 - The code does contain at least one number `5`
 - The code does contain at least one number `6`
@@ -17,11 +17,11 @@ The cli app should display all possible codes for a combination lock with the fo
 
 This app is build without any frameworks to keep it lightweight.
 
-Although _composer autoloader_ is used for loading modules and _PHPUnit_ is used for tests.
+Although _composer autoloader_ is used for loading modules and _PHPUnit_ is used for unit tests.
 
-The CLI App is inside the `index.php` file, which handles the console argument and also handles the `CombinationLock` App.
+The CLI App is inside the `index.php` file, which handles the console argument and also handles the `CodeBreaker` App.
 
-The main `CombinationLock` App consists of two main files, ie. `NumberCode` and `NumberCodeBuilder`.
+The main `CodeBreaker` App consists of two main files, ie. `NumberCode` and `NumberCodeBuilder`.
 
 `NumberCode` is a value object and holds the code, it can be only instantiated but not edited.
 
@@ -50,12 +50,12 @@ The generator could be refactored to take the filter chain, so the filters could
 
 The cli app is packaged in an executable phar archive.
 
-To run the app, simply execute `php combinationlock.phar <n>` with n as the code length (at least 2).
+To run the app, simply execute `php CodeBreaker.phar <n>` with n as the code length (at least 2).
 
 Example:
 
 ```
-$ php combinationlock.phar 5
+$ php CodeBreaker.phar 5
 10056
 10156
 .
@@ -127,7 +127,7 @@ php build-phar.php
 Execute the phar file:
 
 ```
-php combinationlock.phar 5
+php CodeBreaker.phar 5
 ```
 
 #### Run unit tests:
